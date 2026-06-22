@@ -1018,7 +1018,7 @@ void dlaunchDoShutdown(void)
 		self->LoadCount = 1;
 		//*(WORD*)((DWORD)self + 64) = 1;
 	}
-	dbgPrintFake("DashLaunch V%d.%02d.%d shutdown!\n", VER_MAJ, VER_MIN, VER_SVN);
+	dbgPrintFake("DashLaunch V%d.%02d.%d shutdown!\n", VER_MAJ, VER_MIN);
 	dlaunchShutdownSta = 1;
 	doLightSync(&dlaunchShutdownSta);
 }
@@ -1083,7 +1083,7 @@ BOOL LhelperExists(VOID)
 	if(fileExists("tmt:\\lhelper.xex"))
 		ret = TRUE;
 	else
-		dbgPrintFake("DashLaunch V%d.%02d.%d !NOT! starting, lhelper.xex missing!\n", VER_MAJ, VER_MIN, VER_SVN);
+		dbgPrintFake("DashLaunch V%d.%02d.%d !NOT! starting, lhelper.xex missing!\n", VER_MAJ, VER_MIN);
 	deleteLink("tmt:", FALSE);
 	return ret;
 }
@@ -1137,7 +1137,7 @@ VOID launchStartup(int i)
 	genericNoNewUpdateSetAddr(pats[g_usePatch].NoNewUpdate);
 	xamLicenseHook((PDWORD)pats[g_usePatch].LicenseCheck);
 
-	dbgPrintFake("DashLaunch V%d.%02d.%d started!\n", VER_MAJ, VER_MIN, VER_SVN);
+	dbgPrintFake("DashLaunch V%d.%02d.%d started!\n", VER_MAJ, VER_MIN);
 
 	//dbgPrintFake("dashHdd %s\n", dashHdd);
 	g_kernSupported = TRUE;
@@ -1165,11 +1165,11 @@ BOOL APIENTRY DllMain(HANDLE hInstDLL, DWORD reason, LPVOID lpReserved)
 			}
 		}
 		if(mainAtch == FALSE)
-			dbgPrintFake("DashLaunch V%d.%02d.%d failed to match kernel %d\n", VER_MAJ, VER_MIN, VER_SVN, XboxKrnlVersion->Build);
+			dbgPrintFake("DashLaunch V%d.%02d.%d failed to match kernel %d\n", VER_MAJ, VER_MIN, XboxKrnlVersion->Build);
 	}
 	else if(reason == DLL_PROCESS_DETACH)
 	{
-		dbgPrintFake("DashLaunch V%d.%02d.%d unloading!\n", VER_MAJ, VER_MIN, VER_SVN);
+		dbgPrintFake("DashLaunch V%d.%02d.%d unloading!\n", VER_MAJ, VER_MIN);
 	}
 	return TRUE;
 }

@@ -150,8 +150,8 @@ subwcrev ../ ../rev_template.h ../svnversion.h</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Xbox 360'">
     <PreBuildEvent>
-      <Command>del /f $(SolutionDir)embed\$(ProjectName).xex
-subwcrev ../ ../rev_template.h ../svnversion.h</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <ClCompile>
       <AdditionalOptions>/MP  %(AdditionalOptions)</AdditionalOptions>

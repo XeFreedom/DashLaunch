@@ -1,0 +1,27 @@
+﻿Build started 6/22/2026 3:11:18 PM.
+     1>Project "E:\Development\Dashlaunch\xkelib\xkelib.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release21256.0\xkelib.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       PreBuildEvent:
+         Description: creating import libs
+         del E:\Development\Dashlaunch\xkelib\xamext.lib E:\Development\Dashlaunch\xkelib\xamext.exp E:\Development\Dashlaunch\xkelib\kernelext.lib E:\Development\Dashlaunch\xkelib\kernelext.exp
+         lib /def:xam\xamext21256.0.def /MACHINE:PPCBE /OUT:xamext.lib
+         lib /def:kernel\kernelext21256.0.def /MACHINE:PPCBE /OUT:kernelext.lib
+         
+         :VCEnd
+         Microsoft (R) Library Manager Version 10.00.11886.00
+         Copyright (C) Microsoft Corporation.  All rights reserved.
+         
+            Creating library xamext.lib and object xamext.exp
+         Microsoft (R) Library Manager Version 10.00.11886.00
+         Copyright (C) Microsoft Corporation.  All rights reserved.
+         
+            Creating library kernelext.lib and object kernelext.exp
+       FinalizeBuildStatus:
+         Deleting file "Release21256.0\xkelib.unsuccessfulbuild".
+         Touching "Release21256.0\xkelib.lastbuildstate".
+     1>Done Building Project "E:\Development\Dashlaunch\xkelib\xkelib.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.11

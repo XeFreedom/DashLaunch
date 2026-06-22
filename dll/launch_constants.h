@@ -19,7 +19,7 @@ extern ldata ldat = {
 	VER_MAJ,		// USHORT versionMaj;
 	VER_MIN,		// USHORT versionMin;
 	0,				// USHORT targetKernel;
-	VER_SVN,		// USHORT svnVer;
+//	VER_SVN,		// USHORT svnVer;
 	0,				// DWORD options;
 	0,				// DWORD DebugRoutine;
 	0,				// DWORD DebugStepPatch;

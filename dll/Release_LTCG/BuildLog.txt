@@ -1,0 +1,19 @@
+﻿Build started 6/22/2026 3:11:19 PM.
+     1>Project "E:\Development\Dashlaunch\dll\launch.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release_LTCG\launch.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       PreBuildEvent:
+         del /f E:\Development\Dashlaunch\embed\launch.xex
+         subwcrev ../ ../rev_template.h ../svnversion.h
+         :VCEnd
+         Could Not Find E:\Development\Dashlaunch\embed\launch.xex
+         'subwcrev' is not recognized as an internal or external command,
+         operable program or batch file.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(103,5): error MSB3073: The command "del /f E:\Development\Dashlaunch\embed\launch.xex
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(103,5): error MSB3073: subwcrev ../ ../rev_template.h ../svnversion.h
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(103,5): error MSB3073: :VCEnd" exited with code 9009.
+     1>Done Building Project "E:\Development\Dashlaunch\dll\launch.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.04

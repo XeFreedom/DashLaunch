@@ -1,10 +1,10 @@
 #ifndef _VERSION_H
 #define _VERSION_H
-#include "svnversion.h"
+//#include "svnversion.h"
 
 #define VER_MAJ 3
 #define VER_MIN 21
-#define VER_SVN _SVNVERSION
+//#define VER_SVN _SVNVERSION
 
 //#define RELEASE_IS_BETA	1
 
@@ -85,7 +85,7 @@ typedef struct _ldata{
 	USHORT versionMaj;
 	USHORT versionMin;
 	USHORT targetKernel;
-	USHORT svnVer;
+	//USHORT svnVer;
 	DWORD options; // for external apps that want to know what dash launch has set/parsed
 	DWORD DebugRoutine; // for external apps that want to recursively hook and call the first/last chance exception trap on their own
 	DWORD DebugStepPatch; // address to path single step exception to not be skipped (write 0x60000000/nop to this address to enable it)

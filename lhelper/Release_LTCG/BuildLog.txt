@@ -1,0 +1,17 @@
+﻿Build started 6/22/2026 3:11:18 PM.
+     1>Project "E:\Development\Dashlaunch\lhelper\lhelper.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release_LTCG\lhelper.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       PreBuildEvent:
+         del /f E:\Development\Dashlaunch\embed\lhelper.xex
+         :VCEnd
+         Could Not Find E:\Development\Dashlaunch\embed\lhelper.xex
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Xbox 360 SDK\bin\win32\CL.exe /c /I../xkelib /Zi /nologo /W4 /WX- /Ox /Ob2 /Oi /Os /GL /D NDEBUG /D _XBOX /D XBOX /D LTCG /D _XBOX /D _MBCS /GF /Gm- /MT /GS- /Gy /fp:fast /fp:except- /Zc:wchar_t /Zc:forScope /GR- /openmp- /Fo"Release_LTCG\\" /Fd"Release_LTCG\vc80.pdb" /TC lhelper.c /MP  /FI"C:\Program Files (x86)\Microsoft Xbox 360 SDK\\include\xbox\xbox_intellisense_platform.h"
+         lhelper.c
+     1>e:\development\dashlaunch\lhelper\../_common.h(3): fatal error C1083: Cannot open include file: 'svnversion.h': No such file or directory
+     1>Done Building Project "E:\Development\Dashlaunch\lhelper\lhelper.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.40

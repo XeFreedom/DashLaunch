@@ -1,0 +1,9 @@
+﻿Build started 6/22/2026 3:45:24 PM.
+     1>Project "E:\Development\DashLaunchl\swap_dll\swap_dll.vcxproj" on node 2 (clean target(s)).
+     1>_PrepareForClean:
+         Deleting file "Release_LTCG\swap.lastbuildstate".
+     1>Done Building Project "E:\Development\DashLaunchl\swap_dll\swap_dll.vcxproj" (clean target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.01

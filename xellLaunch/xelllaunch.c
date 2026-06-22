@@ -276,7 +276,7 @@ VOID __cdecl main()
 {
 	int i;
 	DWORD typ;
-	DbgPrint("\n\nXellLaunch v.%d.%02d (%d) started\n", VER_MAJ, VER_MIN, VER_SVN);
+	DbgPrint("\n\nXellLaunch v.%d.%02d (%d) started\n", VER_MAJ, VER_MIN);
 	// check for xell.bin on mass0, mass1, mass2, hdd then CD; if found load it
 	for(i = 0; i < 5; i++)
 	{
