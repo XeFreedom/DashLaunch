@@ -332,20 +332,20 @@ BOOL Nand::enumerateNand(void)
 						spareSz = 0x200000;
 						break;
 					default:
-						DbgLog::GetInstance().log("unknown T%s NAND size! (%x)\n", ((configSave >> 4) & 0x3), (configSave >> 4) & 0x3);
+						DbgLog::GetInstance().log("unknown T%u NAND size! (%x)\n", ((configSave >> 4) & 0x3), (configSave >> 4) & 0x3);
 						return FALSE;
 				}
 				break;
 			case 1: // big block flash controller
 				switch ((configSave >> 4) & 0x3)// TODO: FIND OUT FOR 64M!!! IF THERE IS ONE!!!
 				{
-					case 1: // Small block 16MB setup
+					case 1: // Big on Small 16MB setup
 						isBigBlockCont = TRUE;
 						nandInfo.dumpSize = 0x1080000;
 						dataSz = 0x1000000;
 						spareSz = 0x80000;
 						break;
-					case 2: // Large Block: Current Jasper 256MB and 512MB
+					case 2: // Big Block: PSB 128MB/256MB/512MB with 2KB Page/128KB Block
 						isBigBlockCont = TRUE;
 						isBigBlock = TRUE;
 						nandInfo.dumpSize = 0x4200000;
@@ -358,15 +358,28 @@ BOOL Nand::enumerateNand(void)
 						w_blockOff = 0x80000; // start of the block
 						w_patchOff = 0x11000; // start of patches in the block
 						break;
+					case 3: // Bigger Block: PSB 256MB/512MB/1024MB with 4KB Page/256KB Block
+						isBigBlockCont = TRUE;
+						isBigBlock = TRUE;
+						nandInfo.dumpSize = 0x4200000;
+						nandInfo.blockSize = 0x42000;
+						dataSz = 0x4000000;
+						spareSz = 0x200000;
+						pagesPerBlock = 512;
+						w_updateSize = 0x40000; // one block 256KB
+						w_writeSize = 0x40000;
+						w_blockOff = 0x100000;
+						w_patchOff = 0;
+						break;
 					default:
-						DbgLog::GetInstance().log("unknown T%s NAND size! (%x)\n", ((configSave >> 4) & 0x3), (configSave >> 4) & 0x3);
+						DbgLog::GetInstance().log("unknown T%u NAND size! (%x)\n", ((configSave >> 4) & 0x3), (configSave >> 4) & 0x3);
 						return FALSE;
 				}
 				break;
 			case 2: // MMC capable big block flash controller ie: 16M corona 000431c4
 				switch ((configSave >> 4) & 0x3) 
 				{
-					case 0: // 16M
+					case 0: // Big on Small 16MB setup
 						isBigBlockCont = TRUE;
 						nandInfo.dumpSize = 0x1080000;
 						dataSz = 0x1000000;
@@ -378,7 +391,7 @@ BOOL Nand::enumerateNand(void)
 						dataSz = 0x4000000;
 						spareSz = 0x200000;
 						break;
-					case 2: // Big Block
+					case 2: // Big Block: KSB 128MB/256MB/512MB with 2KB Page/128KB Block
 						isBigBlockCont = TRUE;
 						isBigBlock = TRUE;
 						nandInfo.dumpSize = 0x4200000;
@@ -391,10 +404,21 @@ BOOL Nand::enumerateNand(void)
 						w_blockOff = 0x80000; // start of the block
 						w_patchOff = 0x11000; // start of patches in the block
 						break;
-					//case 3: // big block, but with blocks twice the size of known big blocks above...
-					//	break;
+					case 3: // Bigger Block: KSB 256MB/512MB/1024MB with 4KB Page/256KB Block
+						isBigBlockCont = TRUE;
+						isBigBlock = TRUE;
+						nandInfo.dumpSize = 0x4200000;
+						nandInfo.blockSize = 0x42000;
+						dataSz = 0x4000000;
+						spareSz = 0x200000;
+						pagesPerBlock = 512;
+						w_updateSize = 0x40000; // one block 256KB
+						w_writeSize = 0x40000;
+						w_blockOff = 0x100000;
+						w_patchOff = 0;
+						break;
 					default:
-						DbgLog::GetInstance().log("unknown T%s NAND size! (%x)\n", ((configSave >> 4) & 0x3), (configSave >> 4) & 0x3);
+						DbgLog::GetInstance().log("unknown T%u NAND size! (%x)\n", ((configSave >> 4) & 0x3), (configSave >> 4) & 0x3);
 						return FALSE;
 				}
 				break;
@@ -927,12 +951,12 @@ BOOL Nand::enumImageType(void)
 		else
 			w_blockOff += fhdr->dwPatchSlotSize;
 		w_patchOff = 0;
-		if(w_updateSize == 0x20000) 
+		if(isBigBlock)
 		{
-			if((w_blockOff%0x20000) != 0)// some xebuild images had big block with patch slot in the middle of a block
+			if((w_blockOff%w_writeSize) != 0)// some xebuild images have a patch slot in the middle of an erase block
 			{
 				DWORD origOff = w_blockOff;
-				w_blockOff = w_blockOff&~(0x20000-1); // align block read to the start of the block
+				w_blockOff = w_blockOff&~(w_writeSize-1); // align block read to the start of the block
 				w_patchOff = origOff - w_blockOff;// start of patches in the block
 			}
 		}
